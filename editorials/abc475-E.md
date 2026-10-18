@@ -1,5 +1,8 @@
 # E - Quiz Competition: Qualifiers 题解
 
+## 原题链接
+https://atcoder.jp/contests/abc475/tasks/abc475_e?lang=en
+
 ## 思路
 
 - 首先想到的肯定是模拟，但`O(qkn)`的复杂度显然过高
