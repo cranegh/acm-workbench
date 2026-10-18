@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "pages": 33,
+  "template_count": 42,
+  "checks": [
+    "A4 page size",
+    "text bounds on every page",
+    "page footers",
+    "42 clickable TOC destinations",
+    "source code lines in order",
+    "source/test/PDF SHA-256 match",
+    "embedded TrueType fonts",
+    "747 original source hashes unchanged"
+  ],
+  "visual_review": "Separate rendered-page inspection required; this script does not replace it."
+}

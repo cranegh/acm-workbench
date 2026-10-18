@@ -1,0 +1,17 @@
+# Local editor settings
+.vscode/
+
+# Build and Python cache files
+*.o
+*.obj
+*.exe
+*.out
+a.out
+__pycache__/
+*.py[cod]
+.venv/
+
+# Local credentials
+.env
+.env.*
+!.env.example

@@ -1,0 +1,46 @@
+{
+  "files": [
+    {
+      "path": "02_graph/topo_sort.cpp",
+      "interface": "设置全局 n/m；建边时维护 ind[v]；void topo_sort()；ans_sort.size()==n 判无环。",
+      "note": "1-index，n<N；建边时维护 ind，topo_sort() 消耗入度；重复调用前重新统计 ind，结果看 ans_sort",
+      "cost": "O(n+m)",
+      "changes": "恢复原全局 n/m、void topo_sort()、引用遍历及队列循环；仅补充 ans_sort.clear()；去除题目 reach/反向 DP。"
+    },
+    {
+      "path": "02_graph/dijkstra.cpp",
+      "interface": "全局 n/m/s；g[u].push_back({v,w})；void dijksta(int st)；d[v] 为结果。",
+      "note": "1-index，n<N；dijksta(s) 保留原拼写；边权>=0、距离<INF；不可达 INF；多测清空 g",
+      "cost": "O((n+m) log(m+2))",
+      "changes": "恢复原 dijksta 拼写、全局 pq、bitset vis、相等权时比较顶点的 edge 比较符、结构化引用遍历；仅补充 vis/pq 初始化及 ll 减法范围判断。"
+    },
+    {
+      "path": "02_graph/floyd.cpp",
+      "interface": "设置全局 n；init()；d[u][v]=min(d[u][v],w)；floyd()；d[][] 为结果。",
+      "note": "1-index，n<N；先设 n、init()、建边、floyd()；无负环，边权及有限路径绝对值<INF/2",
+      "cost": "O(n^3)",
+      "changes": "恢复原全局 n、void floyd()、对角线初始化位置及三层循环。init() 仅提取原 memset；修正 INF 不一致并补充可达判断。"
+    },
+    {
+      "path": "02_graph/kruskal.cpp",
+      "interface": "e[1..m] 数组存边，int 边权；pair<bool,ll> kruskal(int n,int m)；返回连通性及树/森林权值。",
+      "note": "1<=n<N，0<=m<N；e[1..m] 存 int 边权；kruskal(n,m) 返回 {连通,权值}；root 保留递归路径压缩",
+      "cost": "排序 O(m log m)，并查集仅路径压缩",
+      "changes": "恢复原 e[N]、int u/v/w、递归 root 的 if/else、排序数组、for 循环及 fa[u]=v；移除新增 sz。提取通用 kruskal 函数，去除礼物价格约束与零权跳过，累计 tt 用 ll。"
+    },
+    {
+      "path": "02_graph/astar_kth_walk.cpp",
+      "interface": "全局 n/m/s/t/k；同时建 g1/g2；若 s==t 先 k++；dijkstra(t); Astar(s);；结果全局 ans，终点弹出次数 cnt。",
+      "note": "g2 存反图；1<=n<N，1<=原 k<INT_MAX；s==t 先 k++；dijkstra(t); Astar(s);；边权>=0、答案<INF",
+      "cost": "最坏 O((n+km) log(n+km))",
+      "changes": "恢复原 dijkstra 与 Astar 两函数、g1/g2、vis、edge、dist、ans/cnt 及 curl/f 流程；仅补充重复调用初始化、不可达过滤、每点弹出上限和 ll 减法范围判断。"
+    }
+  ],
+  "tests": {
+    "topo_sort": "\nn=5;\nfor(int i=1;i<=n;i++) g[i].clear();\nauto reset_ind=[&](){\n    fill(ind,ind+n+1,0);\n    for(int u=1;u<=n;u++) for(int v:g[u]) ind[v]++;\n};\ng[1]={2,3};g[2]={4};g[3]={4};reset_ind();topo_sort();assert(ans_sort.size()==5);\nint pos[6]; for(int i=0;i<5;i++) pos[ans_sort[i]]=i;\nfor(int u=1;u<=5;u++) for(int v:g[u]) assert(pos[u]<pos[v]);\ng[4]={1};reset_ind();topo_sort();assert(ans_sort.size()!=5);\ng[4].clear();reset_ind();topo_sort();assert(ans_sort.size()==5);\n",
+    "dijkstra": "\nfor(int tt=0;tt<120;tt++){\n    n=12; ll b[13][13];\n    for(int u=1;u<=n;u++){g[u].clear();for(int v=1;v<=n;v++) b[u][v]=u==v?0:INF;}\n    for(int q=0;q<30;q++){int u=rng()%n+1,v=rng()%n+1;ll w=rng()%30;g[u].push_back({v,w});b[u][v]=min(b[u][v],w);}\n    for(int k=1;k<=n;k++) for(int u=1;u<=n;u++) for(int v=1;v<=n;v++) if(b[u][k]!=INF && b[k][v]!=INF) b[u][v]=min(b[u][v],b[u][k]+b[k][v]);\n    for(int st=1;st<=n;st++){dijksta(st);for(int v=1;v<=n;v++) assert(d[v]==b[st][v]);}\n}\ng[1]={{2,INF-1},{3,LLONG_MAX}};g[2]={{3,5}};g[3].clear();\nn=3;dijksta(1);assert(d[2]==INF-1 && d[3]==INF);\n",
+    "floyd": "\nfor(int tt=0;tt<100;tt++){\n    n=10;init();vector<tuple<int,int,ll>> edges;\n    for(int u=1;u<=n;u++) for(int v=u+1;v<=n;v++) if(rng()%3==0){\n        ll w=(int)(rng()%31)-15; d[u][v]=w;edges.push_back({u,v,w});\n    }\n    floyd();\n    for(int st=1;st<=n;st++){\n        vector<ll> b(n+1,INF);b[st]=0;\n        for(int i=1;i<n;i++) for(auto [u,v,w]:edges) if(b[u]!=INF) b[v]=min(b[v],b[u]+w);\n        for(int v=1;v<=n;v++) assert(d[st][v]==b[v]);\n    }\n}\n",
+    "kruskal": "\nfor(int tt=0;tt<150;tt++){\n    int n=rng()%5+1,m=rng()%9;\n    for(int q=1;q<=m;q++) e[q]={(int)(rng()%n+1),(int)(rng()%n+1),(int)(rng()%21)-10};\n    ll best=LLONG_MAX;\n    for(int mask=0;mask<(1<<m);mask++){\n        if(__builtin_popcount((unsigned)mask)!=n-1) continue;\n        vector<vector<int>> b(n+1);ll sum=0;\n        for(int j=0;j<m;j++) if(mask>>j&1){auto [u,v,w]=e[j+1];b[u].push_back(v);b[v].push_back(u);sum+=w;}\n        vector<int> seen(n+1),q={1};seen[1]=1;\n        for(int i=0;i<(int)q.size();i++) for(int v:b[q[i]]) if(!seen[v]){seen[v]=1;q.push_back(v);}\n        if((int)q.size()==n) best=min(best,sum);\n    }\n    auto [ok,w]=kruskal(n,m);assert(ok==(best!=LLONG_MAX));if(ok) assert(w==best);\n}\n",
+    "astar_kth_walk": "\nfor(int tt=0;tt<150;tt++){\n    n=6;for(int i=1;i<=n;i++){g1[i].clear();g2[i].clear();}\n    for(int q=0;q<15;q++){int u=rng()%n+1,v=rng()%n+1;ll w=rng()%6;g1[u].push_back({v,w});g2[v].push_back({u,w});}\n    s=rng()%n+1;t=rng()%n+1;k=rng()%5+1;int goal=k+(s==t);\n    priority_queue<pair<ll,int>,vector<pair<ll,int>>,greater<pair<ll,int>>> pq;\n    vector<int> count(n+1);pq.push({0,s});ll expected=-1;\n    while(!pq.empty()){\n        auto [d,u]=pq.top();pq.pop();if(++count[u]>goal)continue;\n        if(u==t && count[u]==goal){expected=d;break;}\n        for(auto [v,w]:g1[u])pq.push({d+w,v});\n    }\n    if(s==t)k++;\n    dijkstra(t);Astar(s);assert(ans==expected);\n}\nn=3;for(int i=1;i<=n;i++){g1[i].clear();g2[i].clear();}\ns=1;t=3;k=1;g1[1]={{1,0}};g2[1]={{1,0}};\ndijkstra(t);Astar(s);assert(ans==-1 && cnt==0);\nn=1;s=t=1;k=5;for(int i=1;i<=3;i++){g1[i].clear();g2[i].clear();}\ng1[1]={{1,0}};g2[1]={{1,0}};k++;\ndijkstra(t);Astar(s);assert(ans==0 && cnt==k);\nn=3;s=1;t=3;k=1;for(int i=1;i<=n;i++){g1[i].clear();g2[i].clear();}\ng1[1]={{2,INF-2},{3,LLONG_MAX}};g2[2]={{1,INF-2}};g2[3]={{1,LLONG_MAX},{2,1}};g1[2]={{3,1}};\ndijkstra(t);Astar(s);assert(ans==INF-1);\nk=2;dijkstra(t);Astar(s);assert(ans==-1);\n"
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "status": "PASS",
+  "template_count": 42,
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "checks": [
+    "42/42 independent C++17 syntax checks",
+    "KMP original program samples",
+    "Manacher original program samples",
+    "historical graph randomized differential test: PASS",
+    "no __int128/int128 in template sources"
+  ],
+  "method": "Focused regression tests plus graph restoration differential suite. New snippets are syntax-checked; run them against problem-specific constraints before contest use.",
+  "files": [
+    {
+      "path": "00_base/main.cpp",
+      "sha256": "7913ed9df230fb41dadc0462e2871f908fd814b9a309ee52b7930913a6f06ba3",
+      "compile": "PASS"
+    },
+    {
+      "path": "00_base/fast_pow.cpp",
+      "sha256": "0f6709f64db83c709e52ad9db53aa354745de7dbaba9ac988337899aa8935b21",
+      "compile": "PASS"
+    },
+    {
+      "path": "00_base/binary_search.cpp",
+      "sha256": "6d32e08834e51e14ee2114aed475936780eea188e05202fb8973360efcfdde30",
+      "compile": "PASS"
+    },
+    {
+      "path": "00_base/prefix_sum_2d.cpp",
+      "sha256": "9c776c25a0121a80c2cf8c1956308234c082e0f5fbc66d6a58223f33e2bcadcd",
+      "compile": "PASS"
+    },
+    {
+      "path": "00_base/difference_2d.cpp",
+      "sha256": "6554583157e13f17107f4035960863a39392008963cf2bbc6dba568d40400cb8",
+      "compile": "PASS"
+    },
+    {
+      "path": "00_base/discretization.cpp",
+      "sha256": "dfbb52bdc64a4290d346e94f8b871654ac17d13355ceaa08f9ebdf3174f841c0",
+      "compile": "PASS"
+    },
+    {
+      "path": "01_data_structure/dsu.cpp",
+      "sha256": "b703087c488bf5a89fde0d2539dd1827e194fa2d204daf821de8e9cf1029ee7b",
+      "compile": "PASS"
+    },
+    {
+      "path": "01_data_structure/fenwick.cpp",
+      "sha256": "c0f855230f407f9c944925a32b2c2f9719876570d1ed061e2dc3f8a2447c7150",
+      "compile": "PASS"
+    },
+    {
+      "path": "01_data_structure/segment_tree.cpp",
+      "sha256": "b7747e78bd2afc2333b641114bf4ef344df01afd3ff740ae271e36d1eb2c1768",
+      "compile": "PASS"
+    },
+    {
+      "path": "01_data_structure/lazy_segment_tree.cpp",
+      "sha256": "fee2b777a166069a9eddfc2b9dadf994b71cd3039731dfa77f0c2a92ee025a98",
+      "compile": "PASS"
+    },
+    {
+      "path": "01_data_structure/lazy_assign_add_max.cpp",
+      "sha256": "7dc2d2c3039bbf30256d6f9a6933ef744019540163d2ea03206ae1b226b08843",
+      "compile": "PASS"
+    },
+    {
+      "path": "01_data_structure/sparse_table.cpp",
+      "sha256": "4eaa7a9edcae756f72a5b4e5d7a9901d46f96096d82cf51ba2b3a288d79a5bf8",
+      "compile": "PASS"
+    },
+    {
+      "path": "01_data_structure/monotonic_stack.cpp",
+      "sha256": "4f1ef375668ab0ebcebe4f93e35b5d1773f191fcb163b73ad4ed5741aaee8dc0",
+      "compile": "PASS"
+    },
+    {
+      "path": "01_data_structure/monotonic_queue.cpp",
+      "sha256": "8ff705a034a6fb3e2bac412ca2f987bb2f1a58744df03ed9b586dfa7a17ea033",
+      "compile": "PASS"
+    },
+    {
+      "path": "02_graph/bfs.cpp",
+      "sha256": "511a131bcc97ba84d2e7e12f2c037b801b980465235631900a6d02cd46653b0e",
+      "compile": "PASS"
+    },
+    {
+      "path": "02_graph/dfs_order.cpp",
+      "sha256": "1e9500d6cc7d971351c750540e9de04318fe87308895286f0c8269e9874992c7",
+      "compile": "PASS"
+    },
+    {
+      "path": "02_graph/topo_sort.cpp",
+      "sha256": "37c5096c0287b5ba9ae62cbbc75dd3c1ca15d3bf140a2b3c8e71f3cf028989e0",
+      "compile": "PASS"
+    },
+    {
+      "path": "02_graph/dijkstra.cpp",
+      "sha256": "a5b45521111f7c83cdd8fb6e61c0694d48ddee1ba87368fb07de01133bd80908",
+      "compile": "PASS"
+    },
+    {
+      "path": "02_graph/floyd.cpp",
+      "sha256": "f9d0335e582d970211399f26f8141ef7573e66740c41c36a3be6187bbf6ce034",
+      "compile": "PASS"
+    },
+    {
+      "path": "02_graph/kruskal.cpp",
+      "sha256": "674940352df632cbc905ef4bdad3f95136a4a0c3e57b508bb336c9c5954452d5",
+      "compile": "PASS"
+    },
+    {
+      "path": "02_graph/bipartite.cpp",
+      "sha256": "14114d5566820aafa4e77b60b613f1f090b0c19a0121c2abedb3a4a929f58853",
+      "compile": "PASS"
+    },
+    {
+      "path": "02_graph/bipartite_matching.cpp",
+      "sha256": "2a75b0bed8c1297855756a352ba3d5a00bcb2a479c4ddb8c4782a5c1621eef71",
+      "compile": "PASS"
+    },
+    {
+      "path": "02_graph/lca.cpp",
+      "sha256": "be6101a8382336420a518ce9a9a69268b9eaf4c372ab4141e518d441a295ce29",
+      "compile": "PASS"
+    },
+    {
+      "path": "02_graph/scc.cpp",
+      "sha256": "438ee6f5efbe4c71dfce09c015aea3d4d5ba417d8106368a4910c4ac404ee0b3",
+      "compile": "PASS"
+    },
+    {
+      "path": "02_graph/cut_bridge.cpp",
+      "sha256": "29537b384cd28c7bd8b42d61eeae9742d4a8ac80dbed2a2b295abe0c2e6a74c1",
+      "compile": "PASS"
+    },
+    {
+      "path": "02_graph/astar_kth_walk.cpp",
+      "sha256": "9215c8933a9f05846de40480c6cc0f130ee2d7a9a61c46a9b410e5dc9223ccde",
+      "compile": "PASS"
+    },
+    {
+      "path": "03_string/kmp.cpp",
+      "sha256": "636ae0cb68ac66f90ad955b9cc00083a945d44253468a258597f8caeaf9c3036",
+      "compile": "PASS"
+    },
+    {
+      "path": "03_string/manacher.cpp",
+      "sha256": "482bff9f4f2f6d47fc2e5fc5b7a60c803f3f5857b73f694b50caca0fa7825a20",
+      "compile": "PASS"
+    },
+    {
+      "path": "03_string/trie.cpp",
+      "sha256": "d8b237fb7cd2552c2edf9681736c51018dfb0ff57948e0f6b63eb0a9cb746ed9",
+      "compile": "PASS"
+    },
+    {
+      "path": "03_string/z_function.cpp",
+      "sha256": "3e596075066c22b19331a2d77fd036bf2dfc0cb1a4acc518e17e519ace8d5f5d",
+      "compile": "PASS"
+    },
+    {
+      "path": "03_string/string_hash.cpp",
+      "sha256": "48a245f7d3252f373a9247b345543d1aba7ec43594d424b6ab0bbfa5a4e4f307",
+      "compile": "PASS"
+    },
+    {
+      "path": "04_math/sieve.cpp",
+      "sha256": "8df13f6ce8a02c23a245089616c634f57e265f0af90daa4ad6dab167c76c66c8",
+      "compile": "PASS"
+    },
+    {
+      "path": "04_math/factorization.cpp",
+      "sha256": "0f06eb47c53069340fb314368437432f82156f994d55dd6b6eef7e65ff0ce2a2",
+      "compile": "PASS"
+    },
+    {
+      "path": "04_math/exgcd_inverse.cpp",
+      "sha256": "baa772139378187c7bbafc3745ef4a1a46f0fa7ab2fd07b128a2f266b499d8dc",
+      "compile": "PASS"
+    },
+    {
+      "path": "04_math/combination.cpp",
+      "sha256": "9107c199c36cfbf059665acc3c4f340f31cee294c9696d72d2d61fab6737ac81",
+      "compile": "PASS"
+    },
+    {
+      "path": "05_dp/knapsack_01.cpp",
+      "sha256": "008d36d1870c7353faceb88e60ab10ecb24eae6c8811450430b8f3a711839db4",
+      "compile": "PASS"
+    },
+    {
+      "path": "05_dp/complete_knapsack.cpp",
+      "sha256": "6f98bd4e0fdbd7ea5d7d9577d6d50636ade2dcdff3b8033e6a04fe2697626f71",
+      "compile": "PASS"
+    },
+    {
+      "path": "05_dp/bounded_knapsack.cpp",
+      "sha256": "167ad0095a750ec6c5c04edda5b6c499124c86b1238e36f94c2d3a1db1113001",
+      "compile": "PASS"
+    },
+    {
+      "path": "05_dp/group_knapsack.cpp",
+      "sha256": "40731ee01ef9f2883436fe6be0d4c0cdc9af922ae52072859e475389fa693ebd",
+      "compile": "PASS"
+    },
+    {
+      "path": "05_dp/lis.cpp",
+      "sha256": "3a87fedd33bd248a888c69af157edf1cca6ff9e64395b3568c337357161be8d2",
+      "compile": "PASS"
+    },
+    {
+      "path": "05_dp/submask.cpp",
+      "sha256": "6ed56e10cabb5384e4d010c8aa16aeed4bb243aa4401a1c1b917c5ab668b34dd",
+      "compile": "PASS"
+    },
+    {
+      "path": "06_geometry/convex_hull.cpp",
+      "sha256": "e1c59ad63917b582b7aa8f69e4bb169b8cf38ba65e7ac8ce0d7bb9a13b82b78d",
+      "compile": "PASS"
+    }
+  ]
+}

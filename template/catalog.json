@@ -1,0 +1,580 @@
+[
+  {
+    "path": "00_base/main.cpp",
+    "title": "比赛主程序",
+    "use": "多测入口",
+    "cost": "按题目",
+    "sources": [
+      "solutions/fjcpc_h.cpp"
+    ],
+    "note": "按题意开启多测；每次 solve 清空使用过的全局状态",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "cf/cfcode/fjcpc_h.cpp"
+    ]
+  },
+  {
+    "path": "00_base/fast_pow.cpp",
+    "title": "快速幂",
+    "use": "正模数下幂取模",
+    "cost": "O(log n)",
+    "sources": [
+      "solutions/P_1226_模板_快速幂.cpp"
+    ],
+    "note": "0<=a<p，b>=0，1<=p<=3037000500；保留 ll 乘法，结果再 %p",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "oldcode/P_1226_模板_快速幂.cpp"
+    ]
+  },
+  {
+    "path": "00_base/binary_search.cpp",
+    "title": "整数二分",
+    "use": "寻找最后一个不满足 check 的整数",
+    "cost": "O(log 区间长度) 次 check",
+    "sources": [
+      "solutions/fjcpc_b.cpp"
+    ],
+    "note": "0<=l<r，l+r 不溢出；check 先假后真，端点为假/真哨兵",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "cf/cfcode/fjcpc_b.cpp"
+    ]
+  },
+  {
+    "path": "00_base/prefix_sum_2d.cpp",
+    "title": "二维前缀和",
+    "use": "静态子矩形求和",
+    "cost": "预处理 O(nm)，查询 O(1)",
+    "sources": [
+      "solutions/P_2004_领地选择.cpp"
+    ],
+    "note": "先把原数组放 diff[1..n][1..m]，build 原地求前缀和；不能重复 build",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "luogu/P_2004_领地选择.cpp"
+    ]
+  },
+  {
+    "path": "00_base/difference_2d.cpp",
+    "title": "二维差分",
+    "use": "离线矩形加，最终还原",
+    "cost": "修改 O(1)，还原 O(nm)",
+    "sources": [
+      "solutions/【模板】二维前缀和.cpp"
+    ],
+    "note": "1-index，n+1,m+1<N；原数组用 update(i,j,i,j,aij) 加入",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "oldcode/【模板】二维前缀和.cpp"
+    ]
+  },
+  {
+    "path": "00_base/discretization.cpp",
+    "title": "离散化",
+    "use": "值映射为有序编号",
+    "cost": "预处理 O(n log n)，查询 O(log n)",
+    "sources": [
+      "solutions/P_1955_NOI_2015_程序自动分析.cpp"
+    ],
+    "note": "先 x.clear() 并加入所有值；编号从 0 开始，不保留原坐标距离",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "luogu/P_1955_NOI_2015_程序自动分析.cpp"
+    ]
+  },
+  {
+    "path": "01_data_structure/dsu.cpp",
+    "title": "并查集",
+    "use": "动态连通性",
+    "cost": "单次 root/merge 最坏 O(n)，仅路径压缩",
+    "sources": [
+      "solutions/P_1955_NOI_2015_程序自动分析.cpp"
+    ],
+    "note": "0<=点编号<n<N；保留原直接合并，长父链可能递归较深",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "luogu/P_1955_NOI_2015_程序自动分析.cpp"
+    ]
+  },
+  {
+    "path": "01_data_structure/fenwick.cpp",
+    "title": "树状数组",
+    "use": "单点加、前缀和、区间和",
+    "cost": "修改/查询 O(log n)",
+    "sources": [
+      "solutions/P_3368_模板_树状数组_2.cpp"
+    ],
+    "note": "n<N；update 的 x 必须>=1；普通版和差分版不能混用",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "oldcode/P_3374_模板_树状数组_1.cpp"
+    ]
+  },
+  {
+    "path": "01_data_structure/segment_tree.cpp",
+    "title": "线段树",
+    "use": "单点赋值、区间和",
+    "cost": "建树 O(n)，操作 O(log n)",
+    "sources": [
+      "solutions/P_3372_模板_线段树_1__7c1012046e.cpp"
+    ],
+    "note": "a[1..n]，1<=n<N；build(1,1,n)，update1/query 从根调用",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "luogu/P_3372_模板_线段树_1.cpp"
+    ]
+  },
+  {
+    "path": "01_data_structure/lazy_segment_tree.cpp",
+    "title": "懒标记线段树",
+    "use": "区间加、区间和",
+    "cost": "建树 O(n)，操作 O(log n)",
+    "sources": [
+      "solutions/P_3372_模板_线段树_1__7c1012046e.cpp"
+    ],
+    "note": "a[1..n]，1<=n<N；build(1,1,n) 会重置标记；区间合法且非空",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "luogu/P_3372_模板_线段树_1.cpp"
+    ]
+  },
+  {
+    "path": "01_data_structure/lazy_assign_add_max.cpp",
+    "title": "赋值加法线段树",
+    "use": "区间赋值、区间加、区间最大值",
+    "cost": "建树 O(n)，操作 O(log n)",
+    "sources": [
+      "solutions/P_1253_扶苏的问题.cpp"
+    ],
+    "note": "1<=n<N；先下传赋值再下传加法；值域严格位于 (-INF,INF)",
+    "level": "已有进阶",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "luogu/P_1253_扶苏的问题.cpp"
+    ]
+  },
+  {
+    "path": "01_data_structure/sparse_table.cpp",
+    "title": "ST 表",
+    "use": "静态区间最大值",
+    "cost": "预处理 O(n log n)，查询 O(1)",
+    "sources": [],
+    "note": "1-index，1<=n<N；改 N 时同步改 LOG；不能套用于区间和",
+    "level": "常用",
+    "origin": "按个人风格补充",
+    "historical_sources": []
+  },
+  {
+    "path": "01_data_structure/monotonic_stack.cpp",
+    "title": "单调栈",
+    "use": "右侧第一个严格更大元素的位置",
+    "cost": "O(n)",
+    "sources": [
+      "solutions/P_5788_模板_单调栈.cpp"
+    ],
+    "note": "a[1..n]，n<N；不存在返回 0；大于等于时改为 >=",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "oldcode/P_5788_模板_单调栈.cpp"
+    ]
+  },
+  {
+    "path": "01_data_structure/monotonic_queue.cpp",
+    "title": "单调队列",
+    "use": "长度 k 的滑动窗口最小值",
+    "cost": "O(n)",
+    "sources": [
+      "solutions/P_1886_模板_单调队列_滑动窗口.cpp"
+    ],
+    "note": "a[1..n]，1<=k<=n<N；窗口最大值把 <= 改成 >=",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "oldcode/P_1886_模板_单调队列_滑动窗口.cpp"
+    ]
+  },
+  {
+    "path": "02_graph/bfs.cpp",
+    "title": "BFS",
+    "use": "无权图最短距离",
+    "cost": "O(n+m)",
+    "sources": [],
+    "note": "1-index，n<N；不可达为 -1；多测清空 g[1..n]",
+    "level": "常用",
+    "origin": "按个人风格补充",
+    "historical_sources": []
+  },
+  {
+    "path": "02_graph/dfs_order.cpp",
+    "title": "迭代 DFS",
+    "use": "遍历、生成树父亲与逆序树 DP",
+    "cost": "O(n+m)",
+    "sources": [],
+    "note": "1-index，n<N；仅遍历 st 所在可达部分；多测清空 g",
+    "level": "常用",
+    "origin": "按个人风格补充",
+    "historical_sources": []
+  },
+  {
+    "path": "02_graph/topo_sort.cpp",
+    "title": "拓扑排序",
+    "use": "有向图判环、DAG 处理顺序",
+    "cost": "O(n+m)",
+    "sources": [
+      "solutions/B_3644_模板_拓扑排序_家谱树.cpp"
+    ],
+    "note": "1-index，n<N；topo_sort() 无返回值，ans_sort.size()!=n 表示有环；调用消耗 ind，重跑需重建入度",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "oldcode/B_3644_模板_拓扑排序_家谱树.cpp"
+    ]
+  },
+  {
+    "path": "02_graph/dijkstra.cpp",
+    "title": "Dijkstra",
+    "use": "非负权单源最短路",
+    "cost": "O((n+m) log(m+2))",
+    "sources": [
+      "solutions/P_3371_模板_单源最短路径_弱化版.cpp"
+    ],
+    "note": "1-index，n<N；边权>=0、所需距离<INF；不可达 INF；多测清空 g",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "oldcode/P_3371_模板_单源最短路径_弱化版.cpp"
+    ]
+  },
+  {
+    "path": "02_graph/floyd.cpp",
+    "title": "Floyd",
+    "use": "全源最短路",
+    "cost": "O(n^3)",
+    "sources": [
+      "solutions/floyd.cpp"
+    ],
+    "note": "1-index，n<N；无负环，有限路径绝对值<INF/2；不可达 INF",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "oldcode/floyd.cpp"
+    ]
+  },
+  {
+    "path": "02_graph/kruskal.cpp",
+    "title": "Kruskal",
+    "use": "最小生成树 / 最小生成森林",
+    "cost": "排序 O(m log m)，并查集仅路径压缩",
+    "sources": [
+      "solutions/P_1194_买礼物.cpp"
+    ],
+    "note": "1<=n<N，0<=m<N；填写静态边数组 e[1..m]，调用 kruskal(n,m)；返回 {是否连通,森林权值}",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "luogu/P_1194_买礼物.cpp"
+    ]
+  },
+  {
+    "path": "02_graph/bipartite.cpp",
+    "title": "二分图染色",
+    "use": "无向图二分性判定",
+    "cost": "O(n+m)",
+    "sources": [],
+    "note": "1-index，n<N；无向边加两次；覆盖不连通图",
+    "level": "常用",
+    "origin": "按个人风格补充",
+    "historical_sources": []
+  },
+  {
+    "path": "02_graph/bipartite_matching.cpp",
+    "title": "二分图最大匹配",
+    "use": "增广路求最大匹配数",
+    "cost": "O(n左*m)",
+    "sources": [],
+    "note": "左右分别 1..n、1..m，均<N；只存左到右边；递归深度 O(n)",
+    "level": "银牌补充",
+    "origin": "按个人风格补充",
+    "historical_sources": []
+  },
+  {
+    "path": "02_graph/lca.cpp",
+    "title": "倍增 LCA",
+    "use": "树 / 森林最近公共祖先",
+    "cost": "预处理 O(n log n)，查询 O(log n)",
+    "sources": [],
+    "note": "1-index，n<N；每棵树取编号最小点为根；不同树返回 0",
+    "level": "银牌补充",
+    "origin": "按个人风格补充",
+    "historical_sources": []
+  },
+  {
+    "path": "02_graph/scc.cpp",
+    "title": "强连通分量",
+    "use": "Kosaraju 迭代版",
+    "cost": "O(n+m)",
+    "sources": [],
+    "note": "1-index，n<N；加边同时 g[u].push_back(v)、rg[v].push_back(u)",
+    "level": "银牌补充",
+    "origin": "按个人风格补充",
+    "historical_sources": []
+  },
+  {
+    "path": "02_graph/cut_bridge.cpp",
+    "title": "割点与桥",
+    "use": "无向图 lowlink，支持重边",
+    "cost": "O(n+m)",
+    "sources": [],
+    "note": "1-index，n<N；每条无向边有唯一非负 id，两方向共用 id",
+    "level": "银牌补充",
+    "origin": "按个人风格补充",
+    "historical_sources": []
+  },
+  {
+    "path": "02_graph/astar_kth_walk.cpp",
+    "title": "A* 第 k 短路",
+    "use": "非负权图第 k 短游走，可重复点边",
+    "cost": "最坏 O((n+km) log(n+km))",
+    "sources": [
+      "solutions/P_1379_八数码难题.cpp"
+    ],
+    "note": "g2 存反图；1<=n<N，1<=原 k<INT_MAX；s==t 时先 k++ 排除空路径；先 dijkstra(t) 再 Astar(s)；边权>=0、答案<INF",
+    "level": "已有进阶",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "luogu/P_1379_八数码难题.cpp"
+    ]
+  },
+  {
+    "path": "03_string/kmp.cpp",
+    "title": "KMP",
+    "use": "拼接串前缀函数，输出匹配起点和模式串 pi",
+    "cost": "O(n+m)",
+    "sources": [
+      "contest/nowcoder-summer-2/KMP.cpp",
+      "solutions/P_4391_BalticOI_2009_Radio_Transmission_无线传输.cpp"
+    ],
+    "note": "原程序：读入正文 s1、模式 s2；两串非空且不含 #；输出起点为 1-index",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "cf/summer2/KMP.cpp",
+      "luogu/P_4391_BalticOI_2009_Radio_Transmission_无线传输.cpp"
+    ]
+  },
+  {
+    "path": "03_string/manacher.cpp",
+    "title": "Manacher",
+    "use": "最长回文子串长度",
+    "cost": "O(n)",
+    "sources": [
+      "solutions/P_3805_模板_Manacher.cpp"
+    ],
+    "note": "原程序：读入非空字符串；输入不可含 @/#/$；输出最长回文长度",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "luogu/P_3805_模板_Manacher.cpp"
+    ]
+  },
+  {
+    "path": "03_string/trie.cpp",
+    "title": "Trie",
+    "use": "大小写字母字典，统计完整单词次数",
+    "cost": "O(字符串长度)",
+    "sources": [
+      "contest/nowcoder-summer-3/H.cpp"
+    ],
+    "note": "只允许 A-Z/a-z；最多 N-1 个非根节点，约 212MB；空间不足时减 N",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "cf/summer3/H.cpp"
+    ]
+  },
+  {
+    "path": "03_string/z_function.cpp",
+    "title": "Z-function",
+    "use": "各后缀与全串的最长公共前缀",
+    "cost": "O(n)",
+    "sources": [],
+    "note": "0-index；本模板约定 z[0]=n",
+    "level": "常用",
+    "origin": "按个人风格补充",
+    "historical_sources": []
+  },
+  {
+    "path": "03_string/string_hash.cpp",
+    "title": "双模字符串哈希",
+    "use": "子串相等性快速筛选",
+    "cost": "预处理 O(n)，查询 O(1)",
+    "sources": [],
+    "note": "0-index 半开 [l,r)；比较时同时比较长度；仍可能碰撞，非确定性证明",
+    "level": "常用",
+    "origin": "按个人风格补充",
+    "historical_sources": []
+  },
+  {
+    "path": "04_math/sieve.cpp",
+    "title": "埃氏筛",
+    "use": "筛出 2..n 所有素数",
+    "cost": "O(n log log n)",
+    "sources": [
+      "solutions/埃氏筛.cpp"
+    ],
+    "note": "0<=n<N；vis=1 表示非素数；保留从 2*i 开始，只修正原 vis[i] 笔误",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "oldcode/埃氏筛.cpp"
+    ]
+  },
+  {
+    "path": "04_math/factorization.cpp",
+    "title": "试除分解质因数",
+    "use": "返回 {素因子,指数}",
+    "cost": "O(sqrt(n))",
+    "sources": [
+      "solutions/B_3716_分解质因子_3.cpp"
+    ],
+    "note": "n>=1；大整数试除可能超时，适合约 1e12 以内的少量查询",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "luogu/B_3716_分解质因子_3.cpp"
+    ]
+  },
+  {
+    "path": "04_math/exgcd_inverse.cpp",
+    "title": "扩展欧几里得与逆元",
+    "use": "ax+by=gcd(a,b)，一般模数逆元",
+    "cost": "O(log max(a,b))",
+    "sources": [],
+    "note": "exgcd: 0<=a,b<=1e9 且不全为0；inv: 2<=p<=1e9；无逆元返回 -1",
+    "level": "常用",
+    "origin": "按个人风格补充",
+    "historical_sources": []
+  },
+  {
+    "path": "04_math/combination.cpp",
+    "title": "组合数",
+    "use": "阶乘与快速幂逆元求组合数",
+    "cost": "预处理 O(n)，查询 O(log MOD)",
+    "sources": [
+      "solutions/求组合数.cpp"
+    ],
+    "note": "先 init(最大 n)，0<=n<N 且 n<MOD；保留原 inv 快速幂和单次求逆",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "oldcode/求组合数.cpp"
+    ]
+  },
+  {
+    "path": "05_dp/knapsack_01.cpp",
+    "title": "01 背包",
+    "use": "容量至多 m 的最大价值",
+    "cost": "O(nm)",
+    "sources": [
+      "solutions/P_1048_NOIP_2005_普及组_采药.cpp"
+    ],
+    "note": "物品 {体积,价值}，体积>=0；恰好装满需负 INF 初始化并判可达",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "oldcode/P_1048_NOIP_2005_普及组_采药.cpp"
+    ]
+  },
+  {
+    "path": "05_dp/complete_knapsack.cpp",
+    "title": "完全背包计数",
+    "use": "每种体积无限次，恰好凑出 n 的组合数",
+    "cost": "O(种类数*n)",
+    "sources": [
+      "solutions/P_1832_A_B_Problem_再升级.cpp"
+    ],
+    "note": "0<=n<N；pri 放互不相同的正体积；knapsack() 初始化 dp[0]=1，答案为 dp[n]；所有计数须装入 ll",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "oldcode/P_1832_A_B_Problem_再升级.cpp"
+    ]
+  },
+  {
+    "path": "05_dp/bounded_knapsack.cpp",
+    "title": "多重背包",
+    "use": "二进制拆分数量限制",
+    "cost": "O(m * sum(log(cnt+1)))",
+    "sources": [],
+    "note": "t>0，cnt>=0，m>=0；价值乘数量及总价值必须装入 ll",
+    "level": "常用",
+    "origin": "按个人风格补充",
+    "historical_sources": []
+  },
+  {
+    "path": "05_dp/group_knapsack.cpp",
+    "title": "分组背包",
+    "use": "每组至多选一个物品",
+    "cost": "O(m * 总物品数)",
+    "sources": [
+      "solutions/P_1757_通天之分组背包.cpp"
+    ],
+    "note": "0<=m<N，组号 1..z_max<105；a 为正体积，b 为价值；原地倒序转移不支持零体积；多测清空 wp",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "oldcode/P_1757_通天之分组背包.cpp"
+    ]
+  },
+  {
+    "path": "05_dp/lis.cpp",
+    "title": "最长严格上升子序列",
+    "use": "长度与一个下标方案",
+    "cost": "O(n log n)",
+    "sources": [],
+    "note": "返回 0-index 下标；非降序列把 lower_bound 改为 upper_bound",
+    "level": "常用",
+    "origin": "按个人风格补充",
+    "historical_sources": []
+  },
+  {
+    "path": "05_dp/submask.cpp",
+    "title": "子集枚举",
+    "use": "遍历一个 mask 的所有子集",
+    "cost": "O(2^popcount(mask))",
+    "sources": [],
+    "note": "含空集；所有 mask 再枚举子集总计 O(3^n)，不要保存全部结果",
+    "level": "常用",
+    "origin": "按个人风格补充",
+    "historical_sources": []
+  },
+  {
+    "path": "06_geometry/convex_hull.cpp",
+    "title": "二维凸包",
+    "use": "返回上凸壳 hi 与下凸壳 lo，两条链均按 x 递增",
+    "cost": "O(n log n)",
+    "sources": [
+      "solutions/P_2742_模板_二维凸包_USACO_5_1_圈奶牛Fencing_the_Cows.cpp",
+      "solutions/P_1452_USACO_03_FALL_Beauty_Contest_G.cpp"
+    ],
+    "note": "整数坐标 |x|,|y|<=1e9，叉积和距离平方使用 ll；同 x 上壳留最高点、下壳留最低点；共线中间点被弹出；支持空集/单点",
+    "level": "常用",
+    "origin": "历史提取/修正",
+    "historical_sources": [
+      "luogu/P_2742_模板_二维凸包_USACO_5_1_圈奶牛Fencing_the_Cows.cpp",
+      "luogu/P_1452_USACO_03_FALL_Beauty_Contest_G.cpp"
+    ]
+  }
+]

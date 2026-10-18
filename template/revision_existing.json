@@ -1,0 +1,91 @@
+{
+  "updates": [
+    {
+      "path": "01_data_structure/dsu.cpp",
+      "interface": "init(n) 初始化 0..n-1；int root(int x)；void merge(int x,int y)，无 bool 返回、无 sz。",
+      "cost": "单次 root/merge 最坏 O(n)，路径压缩",
+      "note": "0<=编号<n<=N；保留原路径压缩和直接合并，长链递归深度最坏 O(n)；1-index 时自行初始化 fa[1..n]",
+      "changes": "root/merge 恢复原源码，移除按大小合并。"
+    },
+    {
+      "path": "01_data_structure/fenwick.cpp",
+      "interface": "全局 ll a[N],t[N]，int n,m；init(m)、update(x,v)、getsum(x)、query(l,r)。",
+      "note": "1-index，n<N；update 的 x>=1；原题为差分树状数组，注释保留原差分初始化/区间加/单点查",
+      "changes": "恢复原 a/t、lowbit/update/getsum；保留初始化和普通区间和辅助函数。"
+    },
+    {
+      "path": "01_data_structure/segment_tree.cpp",
+      "interface": "原 build、query1、update1 和 InRange/Outrange；query(1,1,n,l,r)。",
+      "note": "a[1..n]，1<=n<N；单点赋值 update1、单点查 query1、区间和 query 从根调用；所有和在 ll 内",
+      "changes": "区间查询恢复原 InRange/Outrange 三分支，删去单点版本不需的下传。"
+    },
+    {
+      "path": "01_data_structure/lazy_segment_tree.cpp",
+      "interface": "与上一版一致。",
+      "note": "a[1..n]，1<=n<N；build 重置 lzy；非空合法区间；值、懒标记与区间和在 ll 内",
+      "changes": "原流程一致，仅保留多测重建清标记修复。"
+    },
+    {
+      "path": "01_data_structure/lazy_assign_add_max.cpp",
+      "interface": "与上一版一致，changed/change_lzy/add_lzy 和两套 pushdown 原样保留。",
+      "note": "1<=n<N；先下传赋值再下传加法；值域严格位于 (-INF,INF)，累积加法标记在 ll 内",
+      "changes": "原流程一致，仅保留多测重建清标记修复。"
+    },
+    {
+      "path": "01_data_structure/monotonic_stack.cpp",
+      "interface": "build(n)；ll a[N],stk[N],ans[N]，N=3e6+9。",
+      "note": "a[1..n]，n<N；ans[i] 为右侧首个严格更大元素的位置，不存在为 0",
+      "changes": "恢复原 ll 栈/答案数组、N、先赋 ans 再 top-- 两条语句。"
+    },
+    {
+      "path": "01_data_structure/monotonic_queue.cpp",
+      "interface": "window_min(n,k)、window_max(n,k) 都返回 vector<ll>；ll a[N],q[N]，N=1e5+9。",
+      "use": "长度 k 的滑动窗口最小值、最大值",
+      "note": "a[1..n]，1<=k<=n<N；两函数均按窗口右端点 k..n 返回结果",
+      "changes": "恢复原 ll 队列、N 和两遍最小/最大循环；只将输出收集为 ans。"
+    },
+    {
+      "path": "05_dp/knapsack_01.cpp",
+      "interface": "全局 ll dp[N]；void add_item(int T,int t,int v) 加一件；先 fill(dp,dp+T+1,0)，最终 dp[T]。",
+      "use": "容量至多 T 的最大价值",
+      "cost": "O(nT)",
+      "note": "0<=T<N，t>=0；dp 初始化为 0；价值和在 ll 内；恰好装满需改初始化并判断可达",
+      "changes": "恢复全局 dp/N、t/v、原倒序循环；原外层读入循环保留为使用注释。"
+    },
+    {
+      "path": "05_dp/complete_knapsack.cpp",
+      "title": "完全背包计数",
+      "interface": "全局 int n、vector<int> pri、ll dp[N]；设置 n/pri 后 knapsack()，取 dp[n]。",
+      "use": "每种体积无限次，恰好凑出 n 的组合数",
+      "cost": "O(种类数*n)",
+      "note": "0<=n<N；pri 中为不同正体积；dp[0]=1、外层种类、内层正序；所有 dp 状态需在 ll 内",
+      "changes": "恢复 P1832 计数语义和原始两层循环；只去掉题目特有素数筛。"
+    },
+    {
+      "path": "05_dp/group_knapsack.cpp",
+      "interface": "ll dp[N]；struct w{int a,b;}；vector<w> wp[105]；ll knapsack(int m,int z_max)。",
+      "note": "0<=m<N，组号 1..z_max<105；体积 a>0；多测清空 wp；原倒序写法不支持零体积",
+      "changes": "恢复原全局 dp/wp、原 struct w；删除 pre 复制，恢复组号/容量/物品三层循环。"
+    },
+    {
+      "path": "06_geometry/convex_hull.cpp",
+      "interface": "Point 的 x/y 为 ll；ll cross(Point,Point)；ll dis(Point,Point) 返回平方；auto getHull(vector<Point>) 返回 pair<vector<Point>,vector<Point>>，用 auto [hi,lo] 接收。",
+      "use": "上凸壳 hi 与下凸壳 lo，均按 x 递增",
+      "note": "整数坐标 |x|,|y|<=1e9，叉积及平方距离在 ll 内；返回 hi/lo 两条链，非逆时针点集；空输入得空链",
+      "changes": "Point、cross、operator+/-、dis 和 getHull 恢复 P1452 原写法，仅长行换行；保留同 x 筛选和 make_pair(hi,lo)。"
+    }
+  ],
+  "tests": {
+    "dsu": "\nfor(int tt=0;tt<20;tt++){\n    init(30); vector<int> b(30); iota(b.begin(),b.end(),0);\n    for(int q=0;q<200;q++){\n        int u=rng()%30,v=rng()%30,x=b[u],y=b[v];merge(u,v);\n        for(int &z:b)if(z==x)z=y;\n        for(int i=0;i<30;i++)assert((root(i)==root(u))==(b[i]==b[u]));\n    }\n}\ninit(N);merge(N-2,N-1);assert(root(N-2)==N-1);\n",
+    "fenwick": "\nfor(int tt=0;tt<50;tt++){\n    int m=rng()%40+1;init(m);vector<ll>b(m+1);\n    for(int q=0;q<150;q++){\n        int l=rng()%m+1,r=rng()%m+1;if(l>r)swap(l,r);\n        ll v=(int)(rng()%201)-100;update(l,v);b[l]+=v;\n        assert(query(l,r)==accumulate(b.begin()+l,b.begin()+r+1,0LL));\n    }\n    init(m);update(1,7);update(m+1,-7);assert(getsum(m)==7);\n}\ninit(30);vector<ll>b(31);\nfor(int i=1;i<=n;i++){a[i]=b[i]=(int)(rng()%21)-10;update(i,a[i]);update(i+1,-a[i]);}\nfor(int tt=0;tt<150;tt++){\n    int l=rng()%n+1,r=rng()%n+1;if(l>r)swap(l,r);ll v=(int)(rng()%21)-10;\n    update(l,v);update(r+1,-v);for(int i=l;i<=r;i++)b[i]+=v;\n    for(int i=1;i<=n;i++)assert(getsum(i)==b[i]);\n}\n",
+    "segment_tree": "\nfor(int tt=0;tt<100;tt++){\n    int n=rng()%40+1;vector<ll>b(n+1);for(int i=1;i<=n;i++)a[i]=b[i]=(int)(rng()%201)-100;\n    build(1,1,n);\n    for(int q=0;q<250;q++){\n        int l=rng()%n+1,r=rng()%n+1;if(l>r)swap(l,r);ll v=(int)(rng()%201)-100;\n        update1(1,1,n,l,v);b[l]=v;assert(query1(1,1,n,l)==b[l]);\n        l=rng()%n+1;r=rng()%n+1;if(l>r)swap(l,r);assert(query(1,1,n,l,r)==accumulate(b.begin()+l,b.begin()+r+1,0LL));\n    }\n}\n",
+    "lazy_segment_tree": "\nfor(int tt=0;tt<100;tt++){\n    int n=rng()%40+1;vector<ll>b(n+1);for(int i=1;i<=n;i++)a[i]=b[i]=(int)(rng()%201)-100;\n    build(1,1,n);\n    for(int q=0;q<250;q++){\n        int l=rng()%n+1,r=rng()%n+1;if(l>r)swap(l,r);ll v=(int)(rng()%201)-100;\n        update(1,1,n,l,r,v);for(int i=l;i<=r;i++)b[i]+=v;\n        l=rng()%n+1;r=rng()%n+1;if(l>r)swap(l,r);assert(query(1,1,n,l,r)==accumulate(b.begin()+l,b.begin()+r+1,0LL));\n    }\n}\n",
+    "lazy_assign_add_max": "\nfor(int tt=0;tt<100;tt++){\n    int n=rng()%40+1;vector<ll>b(n+1);for(int i=1;i<=n;i++)a[i]=b[i]=(int)(rng()%201)-100;\n    build(1,1,n);\n    for(int q=0;q<250;q++){\n        int l=rng()%n+1,r=rng()%n+1;if(l>r)swap(l,r);ll v=(int)(rng()%201)-100;\n        if(rng()%2){add(1,1,n,l,r,v);for(int i=l;i<=r;i++)b[i]+=v;}else{change(1,1,n,l,r,v);for(int i=l;i<=r;i++)b[i]=v;}\n        l=rng()%n+1;r=rng()%n+1;if(l>r)swap(l,r);assert(query(1,1,n,l,r)==*max_element(b.begin()+l,b.begin()+r+1));\n    }\n}\n",
+    "monotonic_stack": "\nfor(int tt=0;tt<100;tt++){\n    int n=rng()%50+1;for(int i=1;i<=n;i++)a[i]=rng()%10;build(n);\n    for(int i=1;i<=n;i++){\n        int v=0;for(int j=i+1;j<=n;j++)if(a[j]>a[i]){v=j;break;}assert(ans[i]==v);\n    }\n}\n",
+    "monotonic_queue": "\nfor(int tt=0;tt<100;tt++){\n    int n=rng()%50+1;for(int i=1;i<=n;i++)a[i]=(int)(rng()%21)-10;\n    for(int k=1;k<=n;k++){\n        auto b=window_min(n,k);auto c=window_max(n,k);\n        for(int i=k;i<=n;i++){assert(b[i-k]==*min_element(a+i-k+1,a+i+1));assert(c[i-k]==*max_element(a+i-k+1,a+i+1));}\n    }\n}\n",
+    "knapsack_01": "\nfor(int tt=0;tt<150;tt++){\n    int n=8,m=rng()%15;vector<pair<int,ll>>a;\n    for(int i=0;i<n;i++)a.push_back({rng()%7,(int)(rng()%21)-10});\n    ll best=0;\n    for(int mask=0;mask<(1<<n);mask++){\n        int w=0;ll v=0;for(int i=0;i<n;i++)if(mask>>i&1){w+=a[i].first;v+=a[i].second;}\n        if(w<=m)best=max(best,v);\n    }\n    fill(dp,dp+m+1,0);for(auto [t,v]:a)add_item(m,t,(int)v);assert(dp[m]==best);\n}\n",
+    "complete_knapsack": "\nfor(int tt=0;tt<100;tt++){\n    n=rng()%20;pri.clear();for(int x=1;x<=7;x++)if(rng()%2)pri.push_back(x);\n    function<ll(int,int)>brute=[&](int i,int cap){\n        if(i==(int)pri.size())return cap==0?1LL:0LL;ll ways=0;\n        for(int k=0;k*pri[i]<=cap;k++)ways+=brute(i+1,cap-k*pri[i]);return ways;\n    };\n    knapsack();assert(dp[n]==brute(0,n));\n}\nn=0;pri={2,3};knapsack();assert(dp[0]==1);\nn=5;pri={2,3};knapsack();assert(dp[n]==1);\n",
+    "group_knapsack": "\nfor(int tt=0;tt<100;tt++){\n    int m=rng()%15;\n    for(int i=1;i<=4;i++){wp[i].clear();for(int j=0;j<3;j++)wp[i].push_back({(int)(rng()%6)+1,(int)(rng()%16)-5});}\n    function<ll(int,int)>brute=[&](int i,int cap){\n        if(i==5)return 0LL;ll ans=brute(i+1,cap);\n        for(auto c:wp[i])if(c.a<=cap)ans=max(ans,c.b+brute(i+1,cap-c.a));return ans;\n    };\n    assert(knapsack(m,4)==brute(1,m));\n}\nfor(int i=1;i<=4;i++)wp[i].clear();assert(knapsack(10,4)==0);\n",
+    "convex_hull": "\nauto joined=[](const vector<Point>& p){\n    auto [hi,lo]=getHull(p);vector<Point>h;\n    auto append=[&](Point q){if(h.empty()||h.back().x!=q.x||h.back().y!=q.y)h.push_back(q);};\n    for(auto q:lo)append(q);for(int i=(int)hi.size()-1;i>=0;i--)append(hi[i]);\n    if(h.size()>1&&h.front().x==h.back().x&&h.front().y==h.back().y)h.pop_back();return h;\n};\nassert(joined({}).empty());assert(joined({{1,1},{1,1}}).size()==1);\nassert(joined({{0,0},{1,1},{2,2},{1,1}}).size()==2);\nassert(joined({{0,3},{0,1},{0,2},{0,1}}).size()==2);\nfor(int tt=0;tt<200;tt++){\n    vector<Point>p;for(int i=0;i<30;i++)p.push_back({(int)(rng()%21)-10,(int)(rng()%21)-10});\n    auto [hi,lo]=getHull(p);\n    for(auto chain:{hi,lo})for(int i=1;i<(int)chain.size();i++)assert(chain[i-1].x<chain[i].x);\n    auto h=joined(p);assert(h.size()>=3);\n    for(int i=0;i<(int)h.size();i++){\n        Point a=h[i],b=h[(i+1)%h.size()],c=h[(i+2)%h.size()];assert(cross(b-a,c-b)>0);\n        for(auto q:p)assert(cross(b-a,q-a)>=0);\n    }\n}\nauto h=joined({{-1000000000LL,-1000000000LL},{1000000000LL,-1000000000LL},{0,1000000000LL}});assert(h.size()==3);\nassert(dis({-1000000000LL,-1000000000LL},{1000000000LL,1000000000LL})==8000000000000000000LL);\n"
+  }
+}
